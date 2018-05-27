@@ -34,6 +34,14 @@
             "scripts": []
           },
           "configurations": {
+            "fr": {
+              "aot": true,
+              "outputPath": "dist/app-fr/browser",
+              "i18nFile": "src/locale/messages.fr.xlf",
+              "i18nFormat": "xlf",
+              "i18nLocale": "fr",
+              "i18nMissingTranslation": "error"
+            },
             "production": {
               "fileReplacements": [
                 {
@@ -50,6 +58,28 @@
               "extractLicenses": true,
               "vendorChunk": false,
               "buildOptimizer": true
+            },
+            "production-fr": {
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "aot": true,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "outputPath": "dist/app-fr/browser",
+              "i18nFile": "src/locale/messages.fr.xlf",
+              "i18nFormat": "xlf",
+              "i18nLocale": "fr",
+              "i18nMissingTranslation": "error"
             }
           }
         },
@@ -59,8 +89,14 @@
             "browserTarget": "angular:build"
           },
           "configurations": {
+            "fr": {
+              "browserTarget": "angular:build:fr"
+            },
             "production": {
               "browserTarget": "angular:build:production"
+            },
+            "production-fr": {
+              "browserTarget": "angular:build:production-fr"
             }
           }
         },
@@ -72,6 +108,13 @@
             "tsConfig": "src/tsconfig.server.json"
           },
           "configurations": {
+            "fr": {
+              "outputPath": "dist/app-fr/server",
+              "i18nFile": "src/locale/messages.fr.xlf",
+              "i18nFormat": "xlf",
+              "i18nLocale": "fr",
+              "i18nMissingTranslation": "error"
+            },
             "production": {
               "fileReplacements": [
                 {
@@ -80,6 +123,20 @@
                 }
               ],
               "outputHashing": "media"
+            },
+            "production-fr": {
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.prod.ts"
+                }
+              ],
+              "outputHashing": "media",
+              "outputPath": "dist/app-fr/server",
+              "i18nFile": "src/locale/messages.fr.xlf",
+              "i18nFormat": "xlf",
+              "i18nLocale": "fr",
+              "i18nMissingTranslation": "error"
             }
           }
         },
@@ -90,9 +147,18 @@
             "serverTarget": "angular:server"
           },
           "configurations": {
+            "fr": {
+              "browserTarget": "angular:build:fr",
+              "serverTarget": "angular:server:fr"
+            },
             "production": {
               "browserTarget": "angular:build:production",
               "serverTarget": "angular:server:production",
+              "verbose": true
+            },
+            "production-fr": {
+              "browserTarget": "angular:build:production-fr",
+              "serverTarget": "angular:server:production-fr",
               "verbose": true
             }
           }
