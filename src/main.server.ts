@@ -11,6 +11,9 @@ import { NgSetupOptions } from '@nguniversal/express-engine';
 
 import { createApi } from './api';
 
+import { APP_CONFIG_TOKEN } from './app/app-config.service';
+import { Config } from './environments/config';
+
 export { AppServerModule } from './app/app.server.module';
 
 export const PORT = process.env.PORT || 4000;
@@ -23,6 +26,11 @@ export const getNgRenderMiddlewareOptions: () => NgSetupOptions = () => ({
     {
       provide: MODULE_MAP,
       useFactory: () => exports.LAZY_MODULE_MAP,
+      deps: []
+    },
+    {
+      provide: APP_CONFIG_TOKEN,
+      useValue: Config,
       deps: [],
     }
   ]

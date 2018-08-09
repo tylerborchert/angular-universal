@@ -4,6 +4,7 @@ import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { createNewHosts } from '@angularclass/hmr';
 
 import { AppBrowserModule } from './app/app.browser.module';
+import { AppConfigService } from './app/app-config.service';
 import { environment } from './environments/environment';
 
 if (environment.production) {
@@ -44,7 +45,14 @@ function bootstrapWithHmr (boot: () => Promise<NgModuleRef<any>>) {
 
 function main () {
   bootstrap(() => platformBrowserDynamic().bootstrapModule(AppBrowserModule))
-    .then(ngModule => console.log('AppModule boostraped!'))
+    .then(ngModule => {
+      console.log('AppBrowserModule boostraped!');
+
+      const appConfigService = ngModule.injector.get(AppConfigService);
+      const appConfig = appConfigService.all();
+
+      console.log(appConfig);
+    })
     .catch(console.error);
 }
 
