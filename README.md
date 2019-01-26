@@ -22,6 +22,7 @@ The `propsTable` json structure looks like:
 
 The `inputs` field defines a components Inputs. The key field is the name of the input, the default field is what value this input will have when it is rendered server side, the type is the data type, and the description is a brief explination of what this input is used for
 
+The REST routes are mapped to the name of each component, so making the request `GET /example`, will search for the contents of `components/example` and attempt to render whatever is found in `components/example/example.component.ts` using the values of `components/example/props.json`. Your application must follow this directory structure in order for this service to properly work. 
 
 ## How to install
 
