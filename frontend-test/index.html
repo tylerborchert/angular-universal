@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <title>FE Test</title>
+
+    <style>
+      .sourceCode {
+        font-family: monospace;
+        padding: 20px;
+        background: #eee;
+      }
+
+      .sourceCodeBlock {
+        display: inline-block;
+        width: 35%;
+        vertical-align: top;
+      }
+
+      iframe {
+        border: 0;
+      }
+    </style>
+  </head>
+
+  <body>
+    <h1>Angular Component Explorer</h1>
+
+    DummyTitleComponent: <button onClick="getComponent('dummy-title')">Show</button>
+
+    <div id="componentMount"></div>
+
+    <div>
+      <div class="sourceCodeBlock">
+        <h5>Component Code</h5>
+        <div class="sourceCode" id="componentSource"></div>
+      </div>
+
+      <div class="sourceCodeBlock">
+        <h5>Template Code</h5>
+        <div class="sourceCode" id="componentTemplate"></div>
+      </div>
+    </div>
+
+    <script>
+      function getComponent(name) {
+        fetch(`http://localhost:4000/${name}`)
+          .then(resp => resp.json())
+          .then(data => {
+            document.getElementById('componentSource').innerHTML = data.componentSrc;
+            document.getElementById('componentTemplate').innerHTML = data.componentTemplate;
+            document.getElementById('componentMount').innerHTML = data.compiled;
+            console.log(data);
+          });
+      }
+    </script>
+  </body>
+</html>

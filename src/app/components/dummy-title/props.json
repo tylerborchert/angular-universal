@@ -1,0 +1,17 @@
+{
+  "inputs": [
+    {
+      "key": "title",
+      "type": "string",
+      "description": "The title of the person to be greeted",
+      "default": "bob"
+    },
+    {
+      "key": "message",
+      "type": "string",
+      "default": "How are you doing?",
+      "description": "Welcome message for the user"
+    }
+  ],
+  "outputs": []
+}

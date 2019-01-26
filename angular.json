@@ -26,7 +26,8 @@
                 "glob": "**/*",
                 "input": "src/assets",
                 "output": "/assets"
-              }
+              },
+              "src/app/components"
             ],
             "styles": [
               "src/styles.css"

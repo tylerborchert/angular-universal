@@ -35,6 +35,16 @@ let requestListener = createApi(BROWSER_DIST_PATH, getNgRenderMiddlewareOptions(
 
 // Start up the Node server
 const server = createServer((req, res) => {
+  res.setHeader('Access-Control-Allow-Origin', '*');
+	res.setHeader('Access-Control-Request-Method', '*');
+	res.setHeader('Access-Control-Allow-Methods', 'OPTIONS, GET');
+	res.setHeader('Access-Control-Allow-Headers', '*');
+	if ( req.method === 'OPTIONS' ) {
+		res.writeHead(200);
+		res.end();
+		return;
+	}
+  
   requestListener(req, res);
 });
 
@@ -42,7 +52,6 @@ server.listen(PORT, () => {
   console.log(`Server listening -- http://localhost:${PORT}`);
 });
 
-// HMR on server side
 if (module.hot) {
   const hmr = () => {
     const { AppServerModuleNgFactory } = require('./app/app.server.module.ngfactory');
@@ -54,7 +63,6 @@ if (module.hot) {
 
   module.hot.accept('./api', hmr);
   module.hot.accept('./app/app.server.module.ngfactory', hmr);
-  module.hot.accept('./app/welcome/welcome.module.ngfactory', hmr);
 }
 
 export default server;
