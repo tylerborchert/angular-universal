@@ -1,0 +1,17 @@
+{
+  "inputs": [
+    {
+      "key": "directory",
+      "type": "string",
+      "description": "The directory that will be searched",
+      "default": "bob"
+    }
+  ],
+  "outputs": [
+    {
+      "key": "search",
+      "type": "string",
+      "description": "Triggered when a user searches, payload will be a string"
+    }
+  ]
+}

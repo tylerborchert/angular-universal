@@ -19,7 +19,7 @@ export function createApi(distPath: string, ngSetupOptions: NgSetupOptions) {
   api.get('*', (req, res) => {
     const urlQuery = req.originalUrl.split('?');
 
-    if (urlQuery[1] && urlQuery[1] === 'rendered') {
+    if (urlQuery[1] && urlQuery[1].indexOf('rendered') >= 0) {
       res.render('index', { req, res });
     } else {
       try {

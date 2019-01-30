@@ -1,4 +1,8 @@
 <div>
   <h5>Hello, {{title}}</h5>
   <b>{{ message }}</b>
+
+  <div class="time">
+    Component has been running for {{ currentTime }} seconds <a href="#" (click)="resetTime()">reset</a>
+  </div>
 </div>

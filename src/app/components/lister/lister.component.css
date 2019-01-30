@@ -1,0 +1,21 @@
+div {
+  font-family: Verdana;
+}
+
+ul {
+  list-style-type: none;
+  padding: 10px;
+  background: #eee;
+}
+
+li {
+  margin-bottom: 10px;
+  padding: 10px;
+  border-radius: 5px;
+  background: #ddd;
+}
+
+.isFlagged {
+  background: #999;
+  font-weight: bold;
+}

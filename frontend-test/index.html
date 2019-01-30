@@ -5,6 +5,20 @@
     <title>FE Test</title>
 
     <style>
+      body {
+        font-family: Verdana;
+      }
+
+      .loader {
+        display: none;
+      }
+
+      .block {
+        margin-bottom: 20px;
+        border-bottom: 1px solid #ddd;
+        padding-bottom: 20px;
+      }
+
       .sourceCode {
         font-family: monospace;
         padding: 20px;
@@ -17,8 +31,13 @@
         vertical-align: top;
       }
 
+      #componentResize div {
+        cursor: pointer;
+      }
+
       iframe {
-        border: 0;
+        border: 3px solid black;
+        border-radius: 5px;
       }
     </style>
   </head>
@@ -26,11 +45,44 @@
   <body>
     <h1>Angular Component Explorer</h1>
 
-    DummyTitleComponent: <button onClick="getComponent('dummy-title')">Show</button>
+    <div class="block">
+      <div style="margin-bottom: 10px"> DummyTitleComponent: <button onClick="getComponent('dummy-title')">Show</button></div>
+      <div style="margin-bottom: 10px"> ListerComponent: <button onClick="getComponent('lister')">Show</button></div>
+      <div style="margin-bottom: 10px"> SearchComponent: <button onClick="getComponent('search')">Show</button></div>
+    </div>
 
-    <div id="componentMount"></div>
+    <div class="block">
+      <div id="componentMount"></div>
 
-    <div>
+      <div id="componentResize">
+        <div onClick="screenResize('320px', '100%')">
+          <img src="data:image/svg+xml;utf8;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iaXNvLTg4NTktMSI/Pgo8IS0tIEdlbmVyYXRvcjogQWRvYmUgSWxsdXN0cmF0b3IgMTYuMC4wLCBTVkcgRXhwb3J0IFBsdWctSW4gLiBTVkcgVmVyc2lvbjogNi4wMCBCdWlsZCAwKSAgLS0+CjwhRE9DVFlQRSBzdmcgUFVCTElDICItLy9XM0MvL0RURCBTVkcgMS4xLy9FTiIgImh0dHA6Ly93d3cudzMub3JnL0dyYXBoaWNzL1NWRy8xLjEvRFREL3N2ZzExLmR0ZCI+CjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgdmVyc2lvbj0iMS4xIiBpZD0iQ2FwYV8xIiB4PSIwcHgiIHk9IjBweCIgd2lkdGg9IjE2cHgiIGhlaWdodD0iMTZweCIgdmlld0JveD0iMCAwIDMxNC4wMTUgMzE0LjAxNSIgc3R5bGU9ImVuYWJsZS1iYWNrZ3JvdW5kOm5ldyAwIDAgMzE0LjAxNSAzMTQuMDE1OyIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSI+CjxnPgoJPGcgaWQ9Il94MzJfMjUuX2lQaG9uZSI+CgkJPGc+CgkJCTxwYXRoIGQ9Ik0yMTkuODEyLDBIOTQuMjA0Qzc2Ljg2MiwwLDYyLjgwMiwxNC4wNTIsNjIuODAyLDMxLjQwMnYyNTEuMjFjMCwxNy4zNDQsMTQuMDYsMzEuNDAyLDMxLjQwMiwzMS40MDJoMTI1LjYwNyAgICAgYzE3LjM0LDAsMzEuNDAxLTE0LjA1OSwzMS40MDEtMzEuNDAyVjMxLjQwMkMyNTEuMjEzLDE0LjA1MiwyMzcuMTUxLDAsMjE5LjgxMiwweiBNMTU3LjAwNywyOTguMzEzICAgICBjLTguNjY2LDAtMTUuNzAxLTcuMDM3LTE1LjcwMS0xNS43MDFjMC04LjY2LDcuMDM1LTE1LjcwMSwxNS43MDEtMTUuNzAxYzguNjY0LDAsMTUuNzAxLDcuMDQxLDE1LjcwMSwxNS43MDEgICAgIEMxNzIuNzA4LDI5MS4yNzYsMTY1LjY3MSwyOTguMzEzLDE1Ny4wMDcsMjk4LjMxM3ogTTIxOS44MTIsMjUxLjIwNkg5NC4yMDRWMzEuNDAyaDEyNS42MDdWMjUxLjIwNnoiIGZpbGw9IiMwMDAwMDAiLz4KCQk8L2c+Cgk8L2c+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPC9zdmc+Cg==" />
+        </div>
+        <div onClick="screenResize('720px', '100%')">
+          <img src="data:image/svg+xml;utf8;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iaXNvLTg4NTktMSI/Pgo8IS0tIEdlbmVyYXRvcjogQWRvYmUgSWxsdXN0cmF0b3IgMTYuMC4wLCBTVkcgRXhwb3J0IFBsdWctSW4gLiBTVkcgVmVyc2lvbjogNi4wMCBCdWlsZCAwKSAgLS0+CjwhRE9DVFlQRSBzdmcgUFVCTElDICItLy9XM0MvL0RURCBTVkcgMS4xLy9FTiIgImh0dHA6Ly93d3cudzMub3JnL0dyYXBoaWNzL1NWRy8xLjEvRFREL3N2ZzExLmR0ZCI+CjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgdmVyc2lvbj0iMS4xIiBpZD0iQ2FwYV8xIiB4PSIwcHgiIHk9IjBweCIgd2lkdGg9IjE2cHgiIGhlaWdodD0iMTZweCIgdmlld0JveD0iMCAwIDMxNC4wMTQgMzE0LjAxNSIgc3R5bGU9ImVuYWJsZS1iYWNrZ3JvdW5kOm5ldyAwIDAgMzE0LjAxNCAzMTQuMDE1OyIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSI+CjxnPgoJPGcgaWQ9Il94MzJfMjYuX2lQYWQiPgoJCTxnPgoJCQk8cGF0aCBkPSJNMjU5LjA2NSwwSDU0Ljk1MmMtMTcuMzQ4LDAtMzEuNCwxNC4wNTItMzEuNCwzMS40MDJ2MjUxLjIxYzAsMTcuMzQ0LDE0LjA1MiwzMS40MDIsMzEuNCwzMS40MDJoMjA0LjExMyAgICAgYzE3LjM0LDAsMzEuMzk3LTE0LjA1OSwzMS4zOTctMzEuNDAyVjMxLjQwMkMyOTAuNDYyLDE0LjA1MiwyNzYuNDA1LDAsMjU5LjA2NSwweiBNMTU3LjAwNywyOTguMzEzICAgICBjLTguNjY2LDAtMTUuNzAxLTcuMDM3LTE1LjcwMS0xNS43MDFjMC04LjY2LDcuMDM1LTE1LjcwMSwxNS43MDEtMTUuNzAxYzguNjY0LDAsMTUuNzAxLDcuMDQxLDE1LjcwMSwxNS43MDEgICAgIEMxNzIuNzA4LDI5MS4yNzYsMTY1LjY3MSwyOTguMzEzLDE1Ny4wMDcsMjk4LjMxM3ogTTI1OS4wNjUsMjUxLjIwNkg1NC45NTJWMzEuNDAyaDIwNC4xMTNWMjUxLjIwNnoiIGZpbGw9IiMwMDAwMDAiLz4KCQk8L2c+Cgk8L2c+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPC9zdmc+Cg==" />
+        </div>
+
+        <div onClick="screenResize('100%', '100%')">
+          <img src="data:image/svg+xml;utf8;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iaXNvLTg4NTktMSI/Pgo8IS0tIEdlbmVyYXRvcjogQWRvYmUgSWxsdXN0cmF0b3IgMTYuMC4wLCBTVkcgRXhwb3J0IFBsdWctSW4gLiBTVkcgVmVyc2lvbjogNi4wMCBCdWlsZCAwKSAgLS0+CjwhRE9DVFlQRSBzdmcgUFVCTElDICItLy9XM0MvL0RURCBTVkcgMS4xLy9FTiIgImh0dHA6Ly93d3cudzMub3JnL0dyYXBoaWNzL1NWRy8xLjEvRFREL3N2ZzExLmR0ZCI+CjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgdmVyc2lvbj0iMS4xIiBpZD0iQ2FwYV8xIiB4PSIwcHgiIHk9IjBweCIgd2lkdGg9IjE2cHgiIGhlaWdodD0iMTZweCIgdmlld0JveD0iMCAwIDU0OC4xNzIgNTQ4LjE3MiIgc3R5bGU9ImVuYWJsZS1iYWNrZ3JvdW5kOm5ldyAwIDAgNTQ4LjE3MiA1NDguMTcyOyIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSI+CjxnPgoJPHBhdGggZD0iTTUzNC43NSw0OS45NjVjLTguOTQ1LTguOTQ1LTE5LjY5NC0xMy40MjItMzIuMjYxLTEzLjQyMkg0NS42ODFjLTEyLjU2MiwwLTIzLjMxMyw0LjQ3Ny0zMi4yNjQsMTMuNDIyICAgQzQuNDcxLDU4LjkxMywwLDY5LjY2MywwLDgyLjIyNnYzMTAuNjMzYzAsMTIuNTY2LDQuNDcxLDIzLjMxNSwxMy40MTcsMzIuMjY1YzguOTUxLDguOTQ1LDE5LjcwMiwxMy40MTQsMzIuMjY0LDEzLjQxNGgxNTUuMzE4ICAgYzAsNy4yMzEtMS41MjQsMTQuNjYxLTQuNTcsMjIuMjY5Yy0zLjA0NCw3LjYxNC02LjA5LDE0LjI3My05LjEzNiwxOS45ODFjLTMuMDQyLDUuNzE1LTQuNTY1LDkuODk3LTQuNTY1LDEyLjU2ICAgYzAsNC45NDgsMS44MDcsOS4yNCw1LjQyNCwxMi44NDdjMy42MTUsMy42MjEsNy44OTgsNS40MzUsMTIuODQ3LDUuNDM1aDE0Ni4xNzljNC45NDksMCw5LjIzMy0xLjgxMywxMi44NDgtNS40MzUgICBjMy42Mi0zLjYwNiw1LjQyNy03Ljg5OCw1LjQyNy0xMi44NDdjMC0yLjQ2OC0xLjUyNi02LjYxMS00LjU3MS0xMi40MTVjLTMuMDQ2LTUuODAxLTYuMDkyLTEyLjU2Ni05LjEzNC0yMC4yNjcgICBjLTMuMDQ2LTcuNzEtNC41NjktMTUuMDg1LTQuNTY5LTIyLjEyOGgxNTUuMzE4YzEyLjU2LDAsMjMuMzA5LTQuNDY5LDMyLjI1NC0xMy40MTRjOC45NDktOC45NDksMTMuNDIyLTE5LjY5OCwxMy40MjItMzIuMjY1ICAgVjgyLjIyNkM1NDguMTc2LDY5LjY2Myw1NDMuNjk5LDU4LjkxMyw1MzQuNzUsNDkuOTY1eiBNNTExLjYyNywzMTkuNzY4YzAsMi40NzUtMC45MDMsNC42MTMtMi43MTEsNi40MjQgICBjLTEuODEsMS44MDQtMy45NTIsMi43MDctNi40MjcsMi43MDdINDUuNjgxYy0yLjQ3MywwLTQuNjE1LTAuOTAzLTYuNDIzLTIuNzA3Yy0xLjgwNy0xLjgxNy0yLjcxMi0zLjk0OS0yLjcxMi02LjQyNFY4Mi4yMjYgICBjMC0yLjQ3NSwwLjkwMi00LjYxNSwyLjcxMi02LjQyM2MxLjgwOS0xLjgwNSwzLjk1MS0yLjcxMiw2LjQyMy0yLjcxMmg0NTYuODE1YzIuNDcxLDAsNC42MTcsMC45MDQsNi40MiwyLjcxMiAgIGMxLjgwOCwxLjgwOSwyLjcxMSwzLjk0OSwyLjcxMSw2LjQyM1YzMTkuNzY4TDUxMS42MjcsMzE5Ljc2OHoiIGZpbGw9IiMwMDAwMDAiLz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8L3N2Zz4K" />
+        </div>
+
+        <div>
+          Height: <input id="screenSizeHeight" type="text" /> <br/>
+          Width: <input id="screenSizeWidth" type="text" /> <br/>
+          <button onClick="screenResize(document.getElementById('screenSizeWidth').value, document.getElementById('screenSizeHeight').value)">Update</button>
+      </div>
+      <div id="componentLoader" class="loader" style="margin: auto">
+        <img src="https://www.greenrush.com/img/loading.gif" />
+      </div>
+    </div>
+
+    <div class="block">
+      <h5>Props table</h5>
+
+      <div id="componentProps"></div>
+    </div>
+
+    <div class="block">
       <div class="sourceCodeBlock">
         <h5>Component Code</h5>
         <div class="sourceCode" id="componentSource"></div>
@@ -44,14 +96,55 @@
 
     <script>
       function getComponent(name) {
+        document.getElementById('componentLoader').style.display = 'block';
+
         fetch(`http://localhost:4000/${name}`)
           .then(resp => resp.json())
           .then(data => {
             document.getElementById('componentSource').innerHTML = data.componentSrc;
             document.getElementById('componentTemplate').innerHTML = data.componentTemplate;
             document.getElementById('componentMount').innerHTML = data.compiled;
-            console.log(data);
+            document.getElementById('componentLoader').style.display = 'none';
+
+            const props = JSON.parse(data.propsTable);
+
+            let table = `<table><thead><tr><th>Input Name</th><th>Value</th><th>Data Type</th><th>Description</th></tr></thead>`;
+            table += props.inputs.map(inputs => {
+              return `<tr>
+                <td>${inputs.key}</td>
+                <td><input name="${inputs.key}" value="${inputs.default}" /></td>
+                <td>${inputs.type}</td>
+                <td>${inputs.description}</td>
+              </tr>`;
+            });
+
+            table += `</table> <button onClick="setComponentProp('${name}')">Update</button>`;
+
+            document.getElementById('componentProps').innerHTML = table;
           });
+      }
+
+      function setComponentProp(name) {
+        let queryString = ``;
+
+        const propsRows = document.getElementById('componentProps').children[0].children[1].children;
+        for (prop in propsRows) {
+          if (propsRows[prop] && propsRows[prop].children) {
+            queryString += `${propsRows[prop].children[1].children[0].name}=${propsRows[prop].children[1].children[0].value}&`;
+          }
+        }
+        const encodedQuery = encodeURI(`${queryString}rendered`);
+
+        const query = `http://localhost:4000/${name}?${encodedQuery}`;
+        document.getElementById('componentMount').children[0].src = query;
+      }
+
+      function screenResize(width, height) {
+        document.getElementById("componentMount").children[0].style.width = width;
+        document.getElementById("componentMount").children[0].style.height = height;
+
+        document.getElementById("screenSizeWidth").value = width;
+        document.getElementById("screenSizeHeight").value = height;
       }
     </script>
   </body>

@@ -1,0 +1,10 @@
+{
+  "inputs": [
+    {
+      "key": "items",
+      "description": "The list of names to display",
+      "default": [ "lil rick", "OGMAC", "goodboi" ],
+      "type": "Array<string>"
+    }
+  ]
+}

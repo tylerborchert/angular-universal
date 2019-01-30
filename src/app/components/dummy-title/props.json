@@ -9,7 +9,7 @@
     {
       "key": "message",
       "type": "string",
-      "default": "How are you doing?",
+      "default": "Good Evening",
       "description": "Welcome message for the user"
     }
   ],

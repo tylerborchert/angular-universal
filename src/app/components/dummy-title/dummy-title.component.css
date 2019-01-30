@@ -6,3 +6,9 @@ h5 {
   border-bottom: 1px solid #000;
   background: yellow;
 }
+
+.time {
+  margin-top: 15px;
+  font-size: 12px;
+  color: #999;
+}

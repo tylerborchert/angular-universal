@@ -1,0 +1,10 @@
+<div>
+  Real OG niggas:
+  <ul>
+    <li *ngFor="let item of items">
+      <div [ngClass]="{'isFlagged': flagged.indexOf(item) >= 0}">
+        {{ item }} <button (click)="toggleAsFlagged(item)">Flag</button>
+      </div>
+    </li>
+  </ul>
+</div>

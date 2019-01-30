@@ -16,19 +16,34 @@ export class RenderComponent implements OnInit {
     private viewContainerRef: ViewContainerRef) {}
 
   ngOnInit() {
-    const props = this.route.snapshot.data['name'];
+    const buildProps = this.route.snapshot.queryParams;
+    const compName = this.route.snapshot.data['name'];
+    const comp = this.route.snapshot.data['comp'];
 
-    this.http.get(`app/components/${props}/props.json`)
+    const renderOptions = this.route.snapshot.queryParams;
+
+    if (!compName || !comp) {
+      console.log('no props or component to render!');
+      return;
+    }
+
+    this.http.get(`app/components/${compName}/props.json`)
       .subscribe(data => {
-        this.loadComponent(this.route.snapshot.data['comp'], data['inputs']);
+        this.loadComponent(comp, data['inputs'], buildProps);
       });
   }
 
-  loadComponent(component: any, inputs: any) {
+  loadComponent(component: any, initialValues: any, buildValues: any) {
     const viewContainer = this.componentHost;
     const componentFactory = this.componentFactoryResolver.resolveComponentFactory(component);
     const componentRef = viewContainer.createComponent(componentFactory);
 
-    inputs.forEach(input => componentRef.instance[input.key] = input.default);
+    // first set the initial values
+    initialValues.forEach(input => componentRef.instance[input.key] = input.default);
+
+    // then set the build values
+    Object.keys(buildValues)
+      .filter(key => key !== 'rendered')
+      .forEach(input => componentRef.instance[input] = buildValues[input]);
   }
 }
